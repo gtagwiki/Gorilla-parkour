@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Unzip project
         working-directory: .
-        run: unzip -q "*.zip"
+        run: ls *.zip | sort -V | while read z; do unzip -oq "$z"; done
       - uses: actions/setup-node@v4
         with:
           node-version: 22
