@@ -29,6 +29,10 @@ jobs:
       - run: npm run verify
       - run: npm run build
       - run: npx cap add android
+      - name: App icon
+        run: |
+          find android/app/src/main/res -name 'ic_launcher*.webp' -delete
+          cp -r icons/res/. android/app/src/main/res/
       - name: Landscape and fullscreen
         run: |
           sed -i 's#<activity#<activity android:screenOrientation="sensorLandscape"#' android/app/src/main/AndroidManifest.xml
