@@ -16,7 +16,7 @@ jobs:
           ls *.zip | sort -V | while read z; do unzip -oq "$z"; done
       - name: Set version
         run: |
-          V="V1.1.${{ github.run_number }}"
+          V="V2.0.${{ github.run_number }}"
           sed -i "s|<div class=\"pid\" id=\"pid\">|<div class=\"pid\">$V</div><div class=\"pid\" id=\"pid\">|" index.html
       - uses: actions/setup-node@v4
         with:
