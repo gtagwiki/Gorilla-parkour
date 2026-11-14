@@ -14,7 +14,8 @@ jobs:
         working-directory: .
         run: |
           ls *.zip | sort -V | while read z; do unzip -oq "$z"; done
-      - name: Set version
+      - name: Set version      - name: Horror mode
+        run: sed -i 's#</body>#<script type="module" src="/horror/horror.js"></script></body>#' index.html
         run: |
           V="V2.6.${{ github.run_number }}"
           sed -i "s|<div class=\"pid\" id=\"pid\">|<div class=\"pid\">$V</div><div class=\"pid\" id=\"pid\">|" index.html
